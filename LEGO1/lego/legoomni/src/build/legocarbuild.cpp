@@ -12,6 +12,7 @@ DECOMP_SIZE_ASSERT(LegoCarBuild, 0x34c)
 DECOMP_SIZE_ASSERT(LegoVehicleBuildState, 0x50)
 
 // FUNCTION: LEGO1 0x100226d0
+// FUNCTION: BETA10 0x1006ac10
 LegoCarBuild::LegoCarBuild() : m_unk0x28c(0)
 {
 	// Not close yet - might be getting there when more of this class is implemented
@@ -60,6 +61,7 @@ MxBool LegoCarBuild::VTable0x5c()
 }
 
 // STUB: LEGO1 0x10022a80
+// FUNCTION: BETA10 0x1006aea3
 LegoCarBuild::~LegoCarBuild()
 {
 	// TODO
@@ -68,6 +70,7 @@ LegoCarBuild::~LegoCarBuild()
 }
 
 // FUNCTION: LEGO1 0x10022b70
+// FUNCTION: BETA10 0x1006afd9
 MxResult LegoCarBuild::Create(MxDSAction& p_dsAction)
 {
 	// TODO
@@ -77,12 +80,15 @@ MxResult LegoCarBuild::Create(MxDSAction& p_dsAction)
 }
 
 // STUB: LEGO1 0x10022fc0
+// FUNCTION: BETA10 0x1006b90b
 void LegoCarBuild::VTable0x6c()
 {
+	// This one is short
 	// TODO
 }
 
 // STUB: LEGO1 0x10023020
+// possibly BETA10 0x1006b991
 void LegoCarBuild::VTable0x70()
 {
 	// TODO
@@ -90,30 +96,38 @@ void LegoCarBuild::VTable0x70()
 }
 
 // STUB: LEGO1 0x10023500
+// possibly BETA10 0x1006bdf6
 void LegoCarBuild::VTable0x74()
 {
+	// short
 	// TODO
 }
 
 // STUB: LEGO1 0x10023570
+// possibly BETA10 0x1006be91
 void LegoCarBuild::VTable0x78()
 {
+	// short
 	// TODO
 }
 
 // STUB: LEGO1 0x10023620
+// possibly BETA10 0x1006be91
 void LegoCarBuild::VTable0x7c()
 {
+	// short
 	// TODO
 }
 
 // STUB: LEGO1 0x100236a0
+// FUNCTION: BETA10 0x100701f0
 void LegoCarBuild::VTable0x80()
 {
 	// TODO
 }
 
 // STUB: LEGO1 0x100238b0
+// FUNCTION: BETA10 0x1006c18f
 MxResult LegoCarBuild::Tickle()
 {
 	// TODO
@@ -121,6 +135,7 @@ MxResult LegoCarBuild::Tickle()
 }
 
 // STUB: LEGO1 0x10024050
+// FUNCTION: BETA10 0x1006c976
 MxLong LegoCarBuild::Notify(MxParam& p_param)
 {
 	// TODO
@@ -134,6 +149,7 @@ void LegoCarBuild::ReadyWorld()
 }
 
 // FUNCTION: LEGO1 0x100256c0
+// FUNCTION: BETA10 0x1006e96c
 void LegoCarBuild::Enable(MxBool p_enable)
 {
 	LegoWorld::Enable(p_enable);

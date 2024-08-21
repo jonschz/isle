@@ -55,6 +55,7 @@ typedef LegoVehicleBuildState LegoDuneCarBuildState;
 typedef LegoVehicleBuildState LegoJetskiBuildState;
 
 // VTABLE: LEGO1 0x100d6658
+// VTABLE: BETA10 0x101bb880
 // SIZE 0x34c
 class LegoCarBuild : public LegoWorld {
 public:
