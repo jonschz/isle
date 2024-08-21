@@ -88,12 +88,15 @@ public:
 	virtual void VTable0x7c();                        // vtable+0x7c
 	virtual void VTable0x80();                        // vtable+0x80
 
+	int FUN_10025ee0(int param_1);
+
 	// SYNTHETIC: LEGO1 0x10022a60
 	// LegoCarBuild::`scalar deleting destructor'
 
 private:
 	undefined4 m_unk0xf8;       // 0xf8
-	undefined m_unk0xfc[0x8];   // 0xfc
+	undefined4 m_unk0xfc;       // 0xfc
+	undefined4 m_unk0x100;      // 0x100
 	undefined4 m_unk0x104;      // 0x104
 	undefined m_unk0x108;       // 0x108
 	undefined m_unk0x109;       // 0x109
@@ -110,7 +113,8 @@ private:
 	undefined4 m_unk0x258;      // 0x258
 	Mx4DPointFloat m_unk0x25c;  // 0x25c
 	Mx4DPointFloat m_unk0x274;  // 0x274
-	undefined m_unk0x28c[0x18]; // 0x28c
+	undefined4 m_unk0x28c;      // 0x28c
+	undefined m_unk0x290[0x14]; // 0x290
 	Mx4DPointFloat m_unk0x2a4;  // 0x2a4
 	Mx4DPointFloat m_unk0x2bc;  // 0x2bc
 	undefined m_unk0x2d4;       // 0x2d4
@@ -135,7 +139,9 @@ private:
 	undefined4 m_unk0x324;      // 0x324
 	undefined4 m_unk0x328;      // 0x328
 	undefined4 m_unk0x2d8;      // 0x2d8
-	undefined4 m_unk0x32c;      // 0x32c
+
+	LegoVehicleBuildState* m_unk0x32c;      // 0x32c
+
 	undefined4 m_unk0x330;      // 0x330
 	undefined4 m_unk0x334;      // 0x334
 	undefined4 m_unk0x338;      // 0x338
