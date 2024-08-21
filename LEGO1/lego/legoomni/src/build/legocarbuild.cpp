@@ -6,6 +6,7 @@
 #include "mxmisc.h"
 #include "mxnotificationmanager.h"
 #include "scripts.h"
+#include "legoinputmanager.h"
 
 DECOMP_SIZE_ASSERT(LegoCarBuild, 0x34c)
 DECOMP_SIZE_ASSERT(LegoVehicleBuildState, 0x50)
@@ -132,10 +133,20 @@ void LegoCarBuild::ReadyWorld()
 	// TODO
 }
 
-// STUB: LEGO1 0x100256c0
+// FUNCTION: LEGO1 0x100256c0
 void LegoCarBuild::Enable(MxBool p_enable)
 {
-	// TODO
+	LegoWorld::Enable(p_enable);
+
+	if (p_enable) {
+		InputManager()->SetWorld(this);
+		SetIsWorldActive(FALSE);
+	} else {
+		BackgroundAudioManager()->Init();
+		if (InputManager()->GetWorld() == this) {
+			InputManager()->ClearWorld();
+		}
+	}
 }
 
 // FUNCTION: LEGO1 0x10025e70
