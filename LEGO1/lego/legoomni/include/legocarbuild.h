@@ -102,7 +102,7 @@ private:
 	undefined m_unk0x108;       // 0x108
 	undefined m_unk0x109;       // 0x109
 	undefined4 m_unk0x10c;      // 0x10c
-	undefined4 m_unk0x110;      // 0x110
+	OrientableROI* m_unk0x110;  // 0x110
 	Mx3DPointFloat m_unk0x114;  // 0x114
 	undefined4 m_unk0x128;      // 0x128
 	MxMatrix m_unk0x12c;        // 0x12c
@@ -141,15 +141,15 @@ private:
 	undefined4 m_unk0x328;      // 0x328
 	undefined4 m_unk0x2d8;      // 0x2d8
 
-	LegoVehicleBuildState* m_unk0x32c;      // 0x32c
+	LegoVehicleBuildState* m_unk0x32c; // 0x32c
 
-	undefined4 m_unk0x330;      // 0x330
-	undefined4 m_unk0x334;      // 0x334
-	undefined4 m_unk0x338;      // 0x338
-	undefined4 m_unk0x33c;      // 0x33c
-	undefined4 m_unk0x340;      // 0x340
-	undefined4 m_unk0x344;      // 0x344
-	undefined4 m_unk0x348;      // 0x348
+	undefined4 m_unk0x330; // 0x330
+	undefined4 m_unk0x334; // 0x334
+	undefined4 m_unk0x338; // 0x338
+	undefined4 m_unk0x33c; // 0x33c
+	undefined4 m_unk0x340; // 0x340
+	undefined4 m_unk0x344; // 0x344
+	undefined4 m_unk0x348; // 0x348
 };
 
 #endif // LEGOCARBUILD_H

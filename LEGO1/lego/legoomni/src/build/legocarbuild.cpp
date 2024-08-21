@@ -79,12 +79,15 @@ MxResult LegoCarBuild::Create(MxDSAction& p_dsAction)
 	return SUCCESS;
 }
 
-// STUB: LEGO1 0x10022fc0
+// FUNCTION: LEGO1 0x10022fc0
 // FUNCTION: BETA10 0x1006b90b
 void LegoCarBuild::VTable0x6c()
 {
-	// This one is short
-	// TODO
+	m_unk0x178 = m_unk0x1c0;
+	m_unk0x110->WrappedSetLocalTransform(m_unk0x178);
+	m_unk0x2a4 = Vector4(m_unk0x110->GetWorldPosition());
+
+	VTable0x70();
 }
 
 // STUB: LEGO1 0x10023020
