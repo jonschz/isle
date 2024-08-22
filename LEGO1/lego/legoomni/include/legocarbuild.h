@@ -84,7 +84,7 @@ public:
 	void Enable(MxBool p_enable) override;            // vtable+0x68
 	virtual void VTable0x6c();                        // vtable+0x6c
 	virtual void VTable0x70();                        // vtable+0x70
-	virtual void VTable0x74();                        // vtable+0x74
+	virtual void VTable0x74(float *param_1,float *param_2);                        // vtable+0x74
 	virtual void VTable0x78();                        // vtable+0x78
 	virtual void VTable0x7c();                        // vtable+0x7c
 	virtual void VTable0x80();                        // vtable+0x80

@@ -1,12 +1,12 @@
 #include "legocarbuild.h"
 
+#include "legoinputmanager.h"
 #include "legoutils.h"
 #include "misc.h"
 #include "mxbackgroundaudiomanager.h"
 #include "mxmisc.h"
 #include "mxnotificationmanager.h"
 #include "scripts.h"
-#include "legoinputmanager.h"
 
 DECOMP_SIZE_ASSERT(LegoCarBuild, 0x34c)
 DECOMP_SIZE_ASSERT(LegoVehicleBuildState, 0x50)
@@ -98,12 +98,30 @@ void LegoCarBuild::VTable0x70()
 	// good candidate for m_unk0x290
 }
 
-// STUB: LEGO1 0x10023500
-// possibly BETA10 0x1006bdf6
-void LegoCarBuild::VTable0x74()
+// STUB: LEGO1 0x1003ded0
+// FUNCTION: BETA10 0x100d3802
+MxBool FUN_1003ded0(float* param_1, float* param_2, float* param_3)
 {
-	// short
-	// TODO
+
+	// TODO: Find where this belongs
+	return 0;
+}
+
+// FUNCTION: LEGO1 0x10023500
+// FUNCTION: BETA10 0x1006bdf6
+void LegoCarBuild::VTable0x74(float* param_1, float* param_2)
+{
+	float fVar1;
+	float local_20[3];
+	float local_14[3];
+
+	FUN_1003ded0(param_1, local_14, local_20);
+
+	fVar1 = (m_unk0x2a4[2] - local_20[2]) / local_14[2];
+	param_2[0] = (fVar1 * local_14[0] + local_20[0]) - m_unk0x2a4[0];
+	param_2[1] = (fVar1 * local_14[1] + local_20[1]) - m_unk0x2a4[1];
+	param_2[2] = 0.0;
+	return;
 }
 
 // STUB: LEGO1 0x10023570
@@ -160,7 +178,8 @@ void LegoCarBuild::Enable(MxBool p_enable)
 	if (p_enable) {
 		InputManager()->SetWorld(this);
 		SetIsWorldActive(FALSE);
-	} else {
+	}
+	else {
 		BackgroundAudioManager()->Init();
 		if (InputManager()->GetWorld() == this) {
 			InputManager()->ClearWorld();
