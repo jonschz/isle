@@ -98,15 +98,6 @@ void LegoCarBuild::VTable0x70()
 	// good candidate for m_unk0x290
 }
 
-// STUB: LEGO1 0x1003ded0
-// FUNCTION: BETA10 0x100d3802
-MxBool FUN_1003ded0(float* param_1, float* param_2, float* param_3)
-{
-
-	// TODO: Find where this belongs
-	return 0;
-}
-
 // FUNCTION: LEGO1 0x10023500
 // FUNCTION: BETA10 0x1006bdf6
 void LegoCarBuild::VTable0x74(float* param_1, float* param_2)
