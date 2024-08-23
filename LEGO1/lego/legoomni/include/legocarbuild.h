@@ -75,19 +75,19 @@ public:
 		return !strcmp(p_name, LegoCarBuild::ClassName()) || LegoWorld::IsA(p_name);
 	}
 
-	MxLong Notify(MxParam& p_param) override;                // vtable+0x04
-	MxResult Tickle() override;                              // vtable+0x08
-	MxResult Create(MxDSAction& p_dsAction) override;        // vtable+0x18
-	void ReadyWorld() override;                              // vtable+0x50
-	MxBool VTable0x5c() override;                            // vtable+0x5c
-	MxBool Escape() override;                                // vtable+0x64
-	void Enable(MxBool p_enable) override;                   // vtable+0x68
-	virtual void VTable0x6c();                               // vtable+0x6c
-	virtual void VTable0x70();                               // vtable+0x70
-	virtual void VTable0x74(float* param_1, float* param_2); // vtable+0x74
-	virtual void VTable0x78(float* param_1, float* param_2); // vtable+0x78
-	virtual void VTable0x7c();                               // vtable+0x7c
-	virtual void VTable0x80();                               // vtable+0x80
+	MxLong Notify(MxParam& p_param) override;                    // vtable+0x04
+	MxResult Tickle() override;                                  // vtable+0x08
+	MxResult Create(MxDSAction& p_dsAction) override;            // vtable+0x18
+	void ReadyWorld() override;                                  // vtable+0x50
+	MxBool VTable0x5c() override;                                // vtable+0x5c
+	MxBool Escape() override;                                    // vtable+0x64
+	void Enable(MxBool p_enable) override;                       // vtable+0x68
+	virtual void VTable0x6c();                                   // vtable+0x6c
+	virtual void VTable0x70();                                   // vtable+0x70
+	virtual void VTable0x74(float param_1[3], float param_2[3]); // vtable+0x74
+	virtual void VTable0x78(float param_1[3], float param_2[3]); // vtable+0x78
+	virtual void VTable0x7c(float param_1[3], float param_2[3]); // vtable+0x7c
+	virtual void VTable0x80();                                   // vtable+0x80
 
 	int FUN_10025ee0(int param_1);
 
@@ -116,9 +116,9 @@ private:
 	Mx4DPointFloat m_unk0x274;  // 0x274
 	undefined4 m_unk0x28c;      // 0x28c
 	undefined m_unk0x290[4];    // 0x290
-	MxS32 m_unk0x294;      // 0x294
+	MxS32 m_unk0x294;           // 0x294
 	undefined m_unk0x298[4];    // 0x298
-	MxS32 m_unk0x29c;      // 0x29c
+	MxS32 m_unk0x29c;           // 0x29c
 	undefined m_unk0x2a0[4];    // 0x2a0
 	Mx4DPointFloat m_unk0x2a4;  // 0x2a4
 	Mx4DPointFloat m_unk0x2bc;  // 0x2bc

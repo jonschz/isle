@@ -100,7 +100,7 @@ void LegoCarBuild::VTable0x70()
 
 // FUNCTION: LEGO1 0x10023500
 // FUNCTION: BETA10 0x1006bdf6
-void LegoCarBuild::VTable0x74(float* param_1, float* param_2)
+void LegoCarBuild::VTable0x74(float param_1[3], float param_2[3])
 {
 	float fVar1;
 	float local_20[3];
@@ -117,7 +117,7 @@ void LegoCarBuild::VTable0x74(float* param_1, float* param_2)
 
 // FUNCTION: LEGO1 0x10023570
 // FUNCTION: BETA10 0x1006be91
-void LegoCarBuild::VTable0x78(float* param_1, float* param_2)
+void LegoCarBuild::VTable0x78(float param_1[3], float param_2[3])
 {
 	float fVar1;
 	float local_18[3];
@@ -125,19 +125,26 @@ void LegoCarBuild::VTable0x78(float* param_1, float* param_2)
 
 	FUN_1003ded0(param_1, local_18, local_c);
 
-	param_2[2] =  m_unk0x2a4[2] + (m_unk0x2bc[2] -  m_unk0x2a4[2]) * ((param_1[1] - m_unk0x294) / (m_unk0x29c - m_unk0x294));
+	param_2[2] =
+		m_unk0x2a4[2] + (m_unk0x2bc[2] - m_unk0x2a4[2]) * ((param_1[1] - m_unk0x294) / (m_unk0x29c - m_unk0x294));
 	fVar1 = (param_2[2] - local_c[2]) / local_18[2];
 	param_2[0] = fVar1 * local_18[0] - m_unk0x2a4[0] + local_c[0];
 	param_2[1] = fVar1 * local_18[1] - m_unk0x2a4[1] + local_c[1];
 	param_2[2] = param_2[2] - m_unk0x2a4[2];
 }
 
-// STUB: LEGO1 0x10023620
-// possibly BETA10 0x1006be91
-void LegoCarBuild::VTable0x7c()
+// FUNCTION: LEGO1 0x10023620
+// FUNCTION: BETA10 0x1006be91
+void LegoCarBuild::VTable0x7c(float param_1[3], float param_2[3])
 {
-	// short
-	// TODO
+	float local_18[3];
+	float local_c[3];
+	FUN_1003ded0(param_1, local_18, local_c);
+
+	float fVar1 = (m_unk0x2bc[1] - local_c[1]) / local_18[1];
+	param_2[0] = fVar1 * local_18[0] - m_unk0x2a4[0] + local_c[0];
+	param_2[1] = m_unk0x2bc[1] - m_unk0x2a4[1];
+	param_2[2] = fVar1 * local_18[2] - m_unk0x2a4[2] + local_c[2];
 }
 
 // STUB: LEGO1 0x100236a0
