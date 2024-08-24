@@ -75,19 +75,19 @@ public:
 		return !strcmp(p_name, LegoCarBuild::ClassName()) || LegoWorld::IsA(p_name);
 	}
 
-	MxLong Notify(MxParam& p_param) override;                    // vtable+0x04
-	MxResult Tickle() override;                                  // vtable+0x08
-	MxResult Create(MxDSAction& p_dsAction) override;            // vtable+0x18
-	void ReadyWorld() override;                                  // vtable+0x50
-	MxBool VTable0x5c() override;                                // vtable+0x5c
-	MxBool Escape() override;                                    // vtable+0x64
-	void Enable(MxBool p_enable) override;                       // vtable+0x68
-	virtual void VTable0x6c();                                   // vtable+0x6c
-	virtual void VTable0x70();                                   // vtable+0x70
-	virtual void VTable0x74(float param_1[3], float param_2[3]); // vtable+0x74
-	virtual void VTable0x78(float param_1[3], float param_2[3]); // vtable+0x78
-	virtual void VTable0x7c(float param_1[3], float param_2[3]); // vtable+0x7c
-	virtual void VTable0x80();                                   // vtable+0x80
+	MxLong Notify(MxParam& p_param) override;                                                     // vtable+0x04
+	MxResult Tickle() override;                                                                   // vtable+0x08
+	MxResult Create(MxDSAction& p_dsAction) override;                                             // vtable+0x18
+	void ReadyWorld() override;                                                                   // vtable+0x50
+	MxBool VTable0x5c() override;                                                                 // vtable+0x5c
+	MxBool Escape() override;                                                                     // vtable+0x64
+	void Enable(MxBool p_enable) override;                                                        // vtable+0x68
+	virtual void VTable0x6c();                                                                    // vtable+0x6c
+	virtual void VTable0x70();                                                                    // vtable+0x70
+	virtual void VTable0x74(float param_1[3], float param_2[3]);                                  // vtable+0x74
+	virtual void VTable0x78(float param_1[3], float param_2[3]);                                  // vtable+0x78
+	virtual void VTable0x7c(float param_1[3], float param_2[3]);                                  // vtable+0x7c
+	virtual void VTable0x80(float param_1[2], float param_2[2], float param_3, float param_4[2]); // vtable+0x80
 
 	int FUN_10025ee0(int param_1);
 
@@ -115,35 +115,38 @@ private:
 	Mx4DPointFloat m_unk0x25c;  // 0x25c
 	Mx4DPointFloat m_unk0x274;  // 0x274
 	undefined4 m_unk0x28c;      // 0x28c
-	undefined m_unk0x290[4];    // 0x290
-	MxS32 m_unk0x294;           // 0x294
-	undefined m_unk0x298[4];    // 0x298
-	MxS32 m_unk0x29c;           // 0x29c
-	undefined m_unk0x2a0[4];    // 0x2a0
-	Mx4DPointFloat m_unk0x2a4;  // 0x2a4
-	Mx4DPointFloat m_unk0x2bc;  // 0x2bc
-	undefined m_unk0x2d4;       // 0x2d4
-	undefined4 m_unk0x2dc;      // 0x2dc
-	undefined4 m_unk0x2e0;      // 0x2e0
-	undefined4 m_unk0x2e4;      // 0x2e4
-	undefined4 m_unk0x2e8;      // 0x2e8
-	undefined4 m_unk0x2ec;      // 0x2ec
-	undefined4 m_unk0x2f0;      // 0x2f0
-	undefined4 m_unk0x2f4;      // 0x2f4
-	undefined4 m_unk0x2f8;      // 0x2f8
-	undefined4 m_unk0x2fc;      // 0x2fc
-	undefined4 m_unk0x300;      // 0x300
-	undefined4 m_unk0x304;      // 0x304
-	undefined4 m_unk0x308;      // 0x308
-	undefined4 m_unk0x30c;      // 0x30c
-	undefined4 m_unk0x310;      // 0x310
-	undefined4 m_unk0x314;      // 0x314
-	undefined4 m_unk0x318;      // 0x318
-	undefined4 m_unk0x31c;      // 0x31c
-	undefined4 m_unk0x320;      // 0x320
-	undefined4 m_unk0x324;      // 0x324
-	undefined4 m_unk0x328;      // 0x328
-	undefined4 m_unk0x2d8;      // 0x2d8
+
+	// These four are likely locations in pixel space
+	MxS32 m_unk0x290; // 0x290
+	MxS32 m_unk0x294; // 0x294
+	MxS32 m_unk0x298; // 0x298
+	MxS32 m_unk0x29c; // 0x29c
+
+	float m_unk0x2a0;          // 0x2a0
+	Mx4DPointFloat m_unk0x2a4; // 0x2a4
+	Mx4DPointFloat m_unk0x2bc; // 0x2bc
+	undefined m_unk0x2d4;      // 0x2d4
+	undefined4 m_unk0x2dc;     // 0x2dc
+	undefined4 m_unk0x2e0;     // 0x2e0
+	undefined4 m_unk0x2e4;     // 0x2e4
+	undefined4 m_unk0x2e8;     // 0x2e8
+	undefined4 m_unk0x2ec;     // 0x2ec
+	undefined4 m_unk0x2f0;     // 0x2f0
+	undefined4 m_unk0x2f4;     // 0x2f4
+	undefined4 m_unk0x2f8;     // 0x2f8
+	undefined4 m_unk0x2fc;     // 0x2fc
+	undefined4 m_unk0x300;     // 0x300
+	undefined4 m_unk0x304;     // 0x304
+	undefined4 m_unk0x308;     // 0x308
+	undefined4 m_unk0x30c;     // 0x30c
+	undefined4 m_unk0x310;     // 0x310
+	undefined4 m_unk0x314;     // 0x314
+	undefined4 m_unk0x318;     // 0x318
+	undefined4 m_unk0x31c;     // 0x31c
+	undefined4 m_unk0x320;     // 0x320
+	undefined4 m_unk0x324;     // 0x324
+	undefined4 m_unk0x328;     // 0x328
+	undefined4 m_unk0x2d8;     // 0x2d8
 
 	LegoVehicleBuildState* m_unk0x32c; // 0x32c
 

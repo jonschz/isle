@@ -65,10 +65,10 @@ LegoEntity* PickEntity(MxLong, MxLong)
 // FUNCTION: BETA10 0x100d3802
 MxBool FUN_1003ded0(float param_1[3], float param_2[3], float param_3[3])
 {
-	float local_1c [4];
-	float local_10 [3];
+	float local_1c[4];
+	float local_10[3];
 
-	Tgl::View * view = VideoManager()->Get3DManager()->GetLego3DView()->GetView();
+	Tgl::View* view = VideoManager()->Get3DManager()->GetLego3DView()->GetView();
 
 	local_1c[0] = param_1[0];
 	local_1c[1] = param_1[1];
@@ -86,6 +86,14 @@ MxBool FUN_1003ded0(float param_1[3], float param_2[3], float param_3[3])
 	param_2[0] = local_10[0] - param_3[0];
 	param_2[1] = local_10[1] - param_3[1];
 	param_2[2] = local_10[2] - param_3[2];
+	return TRUE;
+}
+
+// FUNCTION: LEGO1 0x1003df70
+// FUNCTION: BETA10 0x100d38cb
+MxBool TransformWorldToScreen(const float world[3], float screen[4])
+{
+	VideoManager()->Get3DManager()->GetLego3DView()->GetView()->TransformWorldToScreen(world, screen);
 	return TRUE;
 }
 

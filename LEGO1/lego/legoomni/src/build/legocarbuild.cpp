@@ -90,12 +90,39 @@ void LegoCarBuild::VTable0x6c()
 	VTable0x70();
 }
 
-// STUB: LEGO1 0x10023020
-// possibly BETA10 0x1006b991
+// FUNCTION: LEGO1 0x10023020
+// FUNCTION: BETA10 0x1006b991
 void LegoCarBuild::VTable0x70()
 {
-	// TODO
-	// good candidate for m_unk0x290
+	float worldPos[3];
+	float screenPos[4];
+
+
+	worldPos[0] = m_unk0x2a4[0];
+	worldPos[1] = m_unk0x2a4[1];
+	worldPos[2] = m_unk0x2a4[2];
+
+	TransformWorldToScreen(worldPos, screenPos);
+
+	m_unk0x290 = screenPos[0] / screenPos[3];
+	m_unk0x294 = screenPos[1] / screenPos[3];
+
+	worldPos[0] = m_unk0x2bc[0];
+	worldPos[1] = m_unk0x2bc[1];
+	worldPos[2] = m_unk0x2bc[2];
+
+	TransformWorldToScreen(worldPos, screenPos);
+
+	m_unk0x298 = screenPos[0] / screenPos[3];
+	m_unk0x29c = screenPos[1] / screenPos[3];
+
+	m_unk0x2a0 = sqrt((float)(m_unk0x298 - m_unk0x290) * (m_unk0x298 - m_unk0x290)  + (m_unk0x29c - m_unk0x294) * (m_unk0x29c - m_unk0x294));
+
+	m_unk0x178.ToQuaternion(m_unk0x25c);
+	m_unk0x28c |= 1;
+
+	m_unk0x208.ToQuaternion(m_unk0x274);
+	m_unk0x28c |= 2;
 }
 
 // FUNCTION: LEGO1 0x10023500
@@ -147,11 +174,17 @@ void LegoCarBuild::VTable0x7c(float param_1[3], float param_2[3])
 	param_2[2] = fVar1 * local_18[2] - m_unk0x2a4[2] + local_c[2];
 }
 
-// STUB: LEGO1 0x100236a0
+// FUNCTION: LEGO1 0x100236a0
 // FUNCTION: BETA10 0x100701f0
-void LegoCarBuild::VTable0x80()
+void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3, float param_4[2])
 {
-	// TODO
+	// The code does the right thing and matches BETA10 perfectly.
+	// Probably compiler entropy
+	if (param_1[1] == 0.0f) {
+		return;
+	}
+	param_4[0] = ((param_3 - param_2[1]) / param_1[1]) * param_1[0] + param_2[0];
+	param_4[1] = param_3;
 }
 
 // STUB: LEGO1 0x100238b0
