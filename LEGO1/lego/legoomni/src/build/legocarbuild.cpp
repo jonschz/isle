@@ -13,7 +13,7 @@ DECOMP_SIZE_ASSERT(LegoVehicleBuildState, 0x50)
 
 // FUNCTION: LEGO1 0x100226d0
 // FUNCTION: BETA10 0x1006ac10
-LegoCarBuild::LegoCarBuild() : m_unk0x28c(0)
+LegoCarBuild::LegoCarBuild()
 {
 	// Not close yet - might be getting there when more of this class is implemented
 	m_unk0x110 = 0;
@@ -118,11 +118,7 @@ void LegoCarBuild::VTable0x70()
 
 	m_unk0x2a0 = sqrt((float)(m_unk0x298 - m_unk0x290) * (m_unk0x298 - m_unk0x290)  + (m_unk0x29c - m_unk0x294) * (m_unk0x29c - m_unk0x294));
 
-	m_unk0x178.ToQuaternion(m_unk0x25c);
-	m_unk0x28c |= 1;
-
-	m_unk0x208.ToQuaternion(m_unk0x274);
-	m_unk0x28c |= 2;
+	m_unk0x25c.Unknown1(m_unk0x178, m_unk0x208);
 }
 
 // FUNCTION: LEGO1 0x10023500
