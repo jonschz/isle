@@ -89,30 +89,33 @@ public:
 	virtual void VTable0x7c(float param_1[3], float param_2[3]);                                  // vtable+0x7c
 	virtual void VTable0x80(float param_1[2], float param_2[2], float param_3, float param_4[2]); // vtable+0x80
 
+	void FUN_10022f30();
+	void FUN_10024f50();
 	int FUN_10025ee0(int param_1);
 
 	// SYNTHETIC: LEGO1 0x10022a60
 	// LegoCarBuild::`scalar deleting destructor'
 
 private:
-	undefined4 m_unk0xf8;             // 0xf8
-	undefined4 m_unk0xfc;             // 0xfc
-	undefined4 m_unk0x100;            // 0x100
-	undefined4 m_unk0x104;            // 0x104
-	undefined m_unk0x108;             // 0x108
-	undefined m_unk0x109;             // 0x109
-	undefined4 m_unk0x10c;            // 0x10c
-	OrientableROI* m_unk0x110;        // 0x110
-	Mx3DPointFloat m_unk0x114;        // 0x114
-	undefined4 m_unk0x128;            // 0x128
-	MxMatrix m_unk0x12c;              // 0x12c
-	undefined m_unk0x174;             // 0x174
-	MxMatrix m_unk0x178;              // 0x178
-	MxMatrix m_unk0x1c0;              // 0x1c0
-	MxMatrix m_unk0x208;              // 0x208
-	undefined m_unk0x250[0x08];       // 0x250
-	undefined4 m_unk0x258;            // 0x258
-	UnknownMx4DPointFloat m_unk0x25c; // 0x25c
+	undefined4 m_unk0xf8;                  // 0xf8
+	MxS16 m_unk0xfc;                       // 0xfc
+	undefined m_unk0xfe[2];                // 0xfe
+	undefined4 m_unk0x100;                 // 0x100
+	undefined4 m_unk0x104;                 // 0x104
+	undefined m_unk0x108;                  // 0x108
+	undefined m_unk0x109;                  // 0x109
+	undefined4 m_unk0x10c;                 // 0x10c
+	LegoROI* m_unk0x110;                   // 0x110
+	Mx3DPointFloat m_unk0x114;             // 0x114
+	undefined4 m_unk0x128;                 // 0x128
+	MxMatrix m_unk0x12c;                   // 0x12c
+	undefined m_unk0x174;                  // 0x174
+	MxMatrix m_unk0x178;                   // 0x178
+	MxMatrix m_unk0x1c0;                   // 0x1c0
+	MxMatrix m_unk0x208;                   // 0x208
+	undefined m_unk0x250[0x08];            // 0x250
+	LegoCarBuildAnimPresenter* m_unk0x258; // 0x258
+	UnknownMx4DPointFloat m_unk0x25c;      // 0x25c
 
 	// These four are likely locations in pixel space
 	MxS32 m_unk0x290; // 0x290
@@ -123,7 +126,7 @@ private:
 	float m_unk0x2a0;          // 0x2a0
 	Mx4DPointFloat m_unk0x2a4; // 0x2a4
 	Mx4DPointFloat m_unk0x2bc; // 0x2bc
-	undefined m_unk0x2d4;      // 0x2d4
+	MxBool m_unk0x2d4;         // 0x2d4
 	undefined4 m_unk0x2dc;     // 0x2dc
 	undefined4 m_unk0x2e0;     // 0x2e0
 	undefined4 m_unk0x2e4;     // 0x2e4

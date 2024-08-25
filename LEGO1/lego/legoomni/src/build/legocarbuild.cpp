@@ -1,5 +1,6 @@
 #include "legocarbuild.h"
 
+#include "legocarbuildpresenter.h"
 #include "legocontrolmanager.h"
 #include "legogamestate.h"
 #include "legoinputmanager.h"
@@ -114,10 +115,9 @@ MxResult LegoCarBuild::Create(MxDSAction& p_dsAction)
 
 		LegoGameState* gameState = GameState();
 
-
 		LegoVehicleBuildState* buildState = (LegoVehicleBuildState*) gameState->GetState(buildStateClassName);
 
-		if (! buildState) {
+		if (!buildState) {
 			buildState = (LegoVehicleBuildState*) gameState->CreateState(buildStateClassName);
 		}
 
@@ -137,6 +137,13 @@ MxResult LegoCarBuild::Create(MxDSAction& p_dsAction)
 	}
 
 	return result;
+}
+
+// STUB: LEGO1 0x10022f30
+// STUB: BETA10 0x1006b835
+void LegoCarBuild::FUN_10022f30()
+{
+	// TODO
 }
 
 // FUNCTION: LEGO1 0x10022fc0
@@ -245,11 +252,27 @@ void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3,
 	param_4[1] = param_3;
 }
 
-// STUB: LEGO1 0x100238b0
+// FUNCTION: LEGO1 0x100238b0
 // FUNCTION: BETA10 0x1006c18f
 MxResult LegoCarBuild::Tickle()
 {
-	// TODO
+	if (!m_worldStarted) {
+		LegoWorld::Tickle();
+		return SUCCESS;
+	}
+
+	if (m_unk0xf8 == 8) {
+		if (m_unk0xfc == 1) {
+			FUN_10024f50();
+		}
+
+		if (m_unk0x110) {
+			if (m_unk0x258->FUN_10079ca0(m_unk0x110->GetName())) {
+				FUN_10022f30();
+			}
+		}
+	}
+
 	return 0;
 }
 
@@ -265,6 +288,14 @@ MxLong LegoCarBuild::Notify(MxParam& p_param)
 void LegoCarBuild::ReadyWorld()
 {
 	// TODO
+}
+
+// FUNCTION: LEGO1 0x10024f50
+// FUNCTION: BETA10 0x1006dfce
+void LegoCarBuild::FUN_10024f50()
+{
+	m_unk0x2d4 = FALSE;
+	m_unk0x258->FUN_10079920(0.07f);
 }
 
 // FUNCTION: LEGO1 0x100256c0
