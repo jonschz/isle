@@ -61,6 +61,13 @@ LegoEntity* PickEntity(MxLong, MxLong)
 	return NULL;
 }
 
+// STUB: LEGO1 0x1003dde0
+// STUB: BETA10 0x100d358e
+void FUN_1003dde0(OrientableROI* param_1, float param_2)
+{
+	// TODO
+}
+
 // FUNCTION: LEGO1 0x1003ded0
 // FUNCTION: BETA10 0x100d3802
 MxBool FUN_1003ded0(float param_1[3], float param_2[3], float param_3[3])

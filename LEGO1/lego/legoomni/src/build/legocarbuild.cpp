@@ -273,6 +273,21 @@ MxResult LegoCarBuild::Tickle()
 		}
 	}
 
+	if (m_unk0x100 == 5 && m_unk0x110) {
+		FUN_1003dde0(m_unk0x110, -0.1f);
+	}
+
+	if (m_unk0x10a) {
+		DWORD time = timeGetTime();
+		DWORD uVar5 = (time - m_unk0x10c) / 100;
+
+		if (m_unk0x330 == 4) {
+			// TODO: Work out constant
+			if (m_unk0x10a == 500) {
+			}
+		}
+	}
+
 	return 0;
 }
 
@@ -314,6 +329,13 @@ void LegoCarBuild::Enable(MxBool p_enable)
 			InputManager()->ClearWorld();
 		}
 	}
+}
+
+// STUB: LEGO1 0x10025db0
+// STUB: BETA10 0x1006ed18
+void LegoCarBuild::FUN_10025db0(const char* param_1, undefined4 param_2)
+{
+	// TODO
 }
 
 // FUNCTION: LEGO1 0x10025e70
