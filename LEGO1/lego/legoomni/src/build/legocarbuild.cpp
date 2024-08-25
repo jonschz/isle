@@ -252,7 +252,7 @@ void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3,
 	param_4[1] = param_3;
 }
 
-#define LOOPTEST(subtract, start, end, str)                                                                            \
+#define LEGOCARBUILD_TICKLE_CASE(subtract, start, end, str)                                                                            \
 	if (start < dTime && dTime < end) {                                                                                \
 		FUN_10025db0(str, dTime - subtract);                                                                           \
 		return SUCCESS;                                                                                                \
@@ -295,21 +295,21 @@ MxResult LegoCarBuild::Tickle()
 			switch (m_unk0x10a) {
 			// TODO: Work out constants
 			case 500:
-				LOOPTEST(160, 160, 180, "Exit_Ctl")
-				LOOPTEST(260, 260, 280, "ShelfUp_Ctl")
-				LOOPTEST(330, 330, 340, "Yellow_Ctl")
-				LOOPTEST(340, 340, 360, "Platform_Ctl")
-				LOOPTEST(390, 390, 410, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(160, 160, 180, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(260, 260, 280, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(330, 330, 340, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(340, 340, 360, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(390, 390, 410, "Exit_Ctl")
 			case 503:
-				LOOPTEST(50, 50, 60, "ShelfUp_Ctl")
-				LOOPTEST(63, 65, 70, "Yellow_Ctl")
-				LOOPTEST(70, 70, 80, "Platform_Ctl")
-				LOOPTEST(95, 95, 105, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(50, 50, 60, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(63, 65, 70, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(70, 70, 80, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(95, 95, 105, "Exit_Ctl")
 			case 504:
-				LOOPTEST(22, 24, 29, "Exit_Ctl")
-				LOOPTEST(33, 35, 40, "ShelfUp_Ctl")
-				LOOPTEST(43, 45, 50, "Yellow_Ctl")
-				LOOPTEST(56, 58, 63, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(22, 24, 29, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(33, 35, 40, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(43, 45, 50, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(56, 58, 63, "Platform_Ctl")
 			default:
 				return SUCCESS;
 			}
@@ -317,20 +317,20 @@ MxResult LegoCarBuild::Tickle()
 		else if (m_unk0x330 == 3) {
 			switch (m_unk0x10a) {
 			case 500:
-				LOOPTEST(291, 291, 311, "Exit_Ctl")
-				LOOPTEST(311, 311, 331, "ShelfUp_Ctl")
-				LOOPTEST(412, 412, 432, "Yellow_Ctl")
-				LOOPTEST(437, 437, 457, "Platform_Ctl")
-				LOOPTEST(485, 485, 505, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(291, 291, 311, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(311, 311, 331, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(412, 412, 432, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(437, 437, 457, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(485, 485, 505, "Exit_Ctl")
 			case 501:
-				LOOPTEST(32, 34, 39, "Exit_Ctl")
-				LOOPTEST(68, 70, 75, "ShelfUp_Ctl")
-				LOOPTEST(105, 105, 115, "Yellow_Ctl")
-				LOOPTEST(133, 135, 140, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(32, 34, 39, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(68, 70, 75, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(105, 105, 115, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(133, 135, 140, "Platform_Ctl")
 			case 504:
-				LOOPTEST(78, 78, 98, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(78, 78, 98, "Exit_Ctl")
 			case 505:
-				LOOPTEST(93, 93, 113, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(93, 93, 113, "Exit_Ctl")
 				// default: // not sure if present
 				// 	return SUCCESS;
 			}
@@ -338,16 +338,16 @@ MxResult LegoCarBuild::Tickle()
 		else if (m_unk0x330 == 2) {
 			switch (m_unk0x10a) {
 			case 500:
-				LOOPTEST(155, 155, 175, "Exit_Ctl")
-				LOOPTEST(215, 215, 235, "ShelfUp_Ctl")
-				LOOPTEST(285, 285, 305, "Yellow_Ctl")
-				LOOPTEST(300, 300, 320, "Platform_Ctl")
-				LOOPTEST(340, 340, 360, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(155, 155, 175, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(215, 215, 235, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(285, 285, 305, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(300, 300, 320, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(340, 340, 360, "Exit_Ctl")
 			case 501:
-				LOOPTEST(23, 23, 33, "Exit_Ctl")
-				LOOPTEST(37, 39, 44, "ShelfUp_Ctl")
-				LOOPTEST(105, 105, 115, "Yellow_Ctl")
-				LOOPTEST(122, 124, 129, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(23, 23, 33, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(37, 39, 44, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(105, 105, 115, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(122, 124, 129, "Platform_Ctl")
 			default:
 				return SUCCESS;
 			}
@@ -355,20 +355,20 @@ MxResult LegoCarBuild::Tickle()
 		else if (m_unk0x330 == 1) {
 			switch (m_unk0x10a) {
 			case 500:
-				LOOPTEST(185, 185, 205, "Exit_Ctl")
-				LOOPTEST(235, 235, 255, "ShelfUp_Ctl")
-				LOOPTEST(292, 292, 312, "Yellow_Ctl")
-				LOOPTEST(315, 315, 335, "Platform_Ctl")
-				LOOPTEST(353, 353, 373, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(185, 185, 205, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(235, 235, 255, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(292, 292, 312, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(315, 315, 335, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(353, 353, 373, "Exit_Ctl")
 			case 501:
-				LOOPTEST(43, 45, 50, "Exit_Ctl")
-				LOOPTEST(72, 74, 79, "ShelfUp_Ctl")
-				LOOPTEST(114, 116, 121, "Yellow_Ctl")
-				LOOPTEST(128, 130, 135, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(43, 45, 50, "Exit_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(72, 74, 79, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(114, 116, 121, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(128, 130, 135, "Platform_Ctl")
 			case 505:
-				LOOPTEST(30, 30, 40, "ShelfUp_Ctl")
-				LOOPTEST(60, 60, 70, "Yellow_Ctl")
-				LOOPTEST(48, 48, 58, "Platform_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(30, 30, 40, "ShelfUp_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(60, 60, 70, "Yellow_Ctl")
+				LEGOCARBUILD_TICKLE_CASE(48, 48, 58, "Platform_Ctl")
 			default:
 				return SUCCESS;
 			}
