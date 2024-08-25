@@ -56,4 +56,5 @@ void LegoCarBuildAnimPresenter::FUN_10079920(float param_1)
 MxBool LegoCarBuildAnimPresenter::FUN_10079ca0(const char* param_1)
 {
 	// TODO; pretty short
+	return FALSE;
 }

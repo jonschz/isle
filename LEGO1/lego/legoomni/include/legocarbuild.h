@@ -4,6 +4,8 @@
 #include "legostate.h"
 #include "legoworld.h"
 
+class LegoCarBuildAnimPresenter;
+
 // VTABLE: LEGO1 0x100d66e0
 // SIZE 0x50
 class LegoVehicleBuildState : public LegoState {
