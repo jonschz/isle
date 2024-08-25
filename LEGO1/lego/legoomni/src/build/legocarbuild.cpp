@@ -252,7 +252,7 @@ void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3,
 	param_4[1] = param_3;
 }
 
-#define LEGOCARBUILD_TICKLE_CASE(subtract, start, end, str)                                                                            \
+#define LEGOCARBUILD_TICKLE_CASE(subtract, start, end, str)                                                            \
 	if (start < dTime && dTime < end) {                                                                                \
 		FUN_10025db0(str, dTime - subtract);                                                                           \
 		return SUCCESS;                                                                                                \
@@ -398,6 +398,18 @@ void LegoCarBuild::FUN_10024f50()
 {
 	m_unk0x2d4 = FALSE;
 	m_unk0x258->FUN_10079920(0.07f);
+}
+
+// FUNCTION: LEGO1 0x10025010
+void LegoCarBuild::ToggleEnabled()
+{
+	m_unk0x2dc->Enable(!m_unk0x2dc->IsEnabled());
+	m_unk0x2e0->Enable(!m_unk0x2e0->IsEnabled());
+	m_unk0x2e4->Enable(!m_unk0x2e4->IsEnabled());
+	m_unk0x2e8->Enable(!m_unk0x2e8->IsEnabled());
+	m_unk0x2ec->Enable(!m_unk0x2ec->IsEnabled());
+	m_unk0x2f0->Enable(!m_unk0x2f0->IsEnabled());
+	m_unk0x2f4->Enable(!m_unk0x2f4->IsEnabled());
 }
 
 // FUNCTION: LEGO1 0x100256c0

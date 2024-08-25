@@ -93,6 +93,7 @@ public:
 
 	void FUN_10022f30();
 	void FUN_10024f50();
+	void ToggleEnabled();
 	void FUN_10025db0(const char* param_1, undefined4 param_2);
 	int FUN_10025ee0(int param_1);
 
@@ -131,13 +132,13 @@ private:
 	Mx4DPointFloat m_unk0x2a4; // 0x2a4
 	Mx4DPointFloat m_unk0x2bc; // 0x2bc
 	MxBool m_unk0x2d4;         // 0x2d4
-	undefined4 m_unk0x2dc;     // 0x2dc
-	undefined4 m_unk0x2e0;     // 0x2e0
-	undefined4 m_unk0x2e4;     // 0x2e4
-	undefined4 m_unk0x2e8;     // 0x2e8
-	undefined4 m_unk0x2ec;     // 0x2ec
-	undefined4 m_unk0x2f0;     // 0x2f0
-	undefined4 m_unk0x2f4;     // 0x2f4
+	MxPresenter* m_unk0x2dc;   // 0x2dc
+	MxPresenter* m_unk0x2e0;   // 0x2e0
+	MxPresenter* m_unk0x2e4;   // 0x2e4
+	MxPresenter* m_unk0x2e8;   // 0x2e8
+	MxPresenter* m_unk0x2ec;   // 0x2ec
+	MxPresenter* m_unk0x2f0;   // 0x2f0
+	MxPresenter* m_unk0x2f4;   // 0x2f4
 	undefined4 m_unk0x2f8;     // 0x2f8
 	undefined4 m_unk0x2fc;     // 0x2fc
 	undefined4 m_unk0x300;     // 0x300
