@@ -254,14 +254,18 @@ void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3,
 
 #define LOOPTEST(start, end, str)                                                                                      \
 	if (start < dTime && dTime < end) {                                                                                \
-		FUN_10025db0(str, dTime - end);                                                                                \
+		FUN_10025db0(str, dTime - start);                                                                                \
 		return SUCCESS;                                                                                                \
 	}
+
+// GLOBAL: LEGO1 0x100d65a4
+const MxFloat MINUS_ZEROPOINTONE = -0.1f;
 
 // FUNCTION: LEGO1 0x100238b0
 // FUNCTION: BETA10 0x1006c18f
 MxResult LegoCarBuild::Tickle()
 {
+
 	if (!m_worldStarted) {
 		LegoWorld::Tickle();
 		return SUCCESS;
@@ -280,7 +284,7 @@ MxResult LegoCarBuild::Tickle()
 	}
 
 	if (m_unk0x100 == 5 && m_unk0x110) {
-		FUN_1003dde0(m_unk0x110, -0.1f);
+		FUN_1003dde0(m_unk0x110, MINUS_ZEROPOINTONE);
 	}
 
 	if (m_unk0x10a) {
@@ -291,18 +295,18 @@ MxResult LegoCarBuild::Tickle()
 			switch (m_unk0x10a) {
 			// TODO: Work out constants
 			case 500:
-				LOOPTEST(160, 180, "Exit_Ctrl")
+				LOOPTEST(160, 180, "Exit_Ctl")
 				LOOPTEST(260, 280, "ShelfUp_Ctl")
 				LOOPTEST(330, 340, "Yellow_Ctl")
 				LOOPTEST(340, 360, "Platform_Ctl")
-				LOOPTEST(390, 410, "Exit_Ctrl")
+				LOOPTEST(390, 410, "Exit_Ctl")
 			case 503:
 				LOOPTEST(50, 60, "ShelfUp_Ctl")
 				LOOPTEST(65, 70, "Yellow_Ctl")
 				LOOPTEST(70, 80, "Platform_Ctl")
-				LOOPTEST(95, 105, "Exit_Ctrl")
+				LOOPTEST(95, 105, "Exit_Ctl")
 			case 504:
-				LOOPTEST(24, 29, "Exit_Ctrl")
+				LOOPTEST(24, 29, "Exit_Ctl")
 				LOOPTEST(35, 40, "ShelfUp_Ctl")
 				LOOPTEST(45, 50, "Yellow_Ctl")
 				LOOPTEST(58, 63, "Platform_Ctl")
@@ -313,20 +317,20 @@ MxResult LegoCarBuild::Tickle()
 		else if (m_unk0x330 == 3) {
 			switch (m_unk0x10a) {
 			case 500:
-				LOOPTEST(291, 311, "Exit_Ctrl")
+				LOOPTEST(291, 311, "Exit_Ctl")
 				LOOPTEST(311, 331, "ShelfUp_Ctl")
 				LOOPTEST(412, 432, "Yellow_Ctl")
 				LOOPTEST(437, 457, "Platform_Ctl")
-				LOOPTEST(485, 505, "Exit_Ctrl")
+				LOOPTEST(485, 505, "Exit_Ctl")
 			case 501:
-				LOOPTEST(34, 39, "Exit_Ctrl")
+				LOOPTEST(34, 39, "Exit_Ctl")
 				LOOPTEST(70, 75, "ShelfUp_Ctl")
 				LOOPTEST(105, 115, "Yellow_Ctl")
 				LOOPTEST(135, 140, "Platform_Ctl")
 			case 504:
-				LOOPTEST(78, 98, "Exit_Ctrl")
+				LOOPTEST(78, 98, "Exit_Ctl")
 			case 505:
-				LOOPTEST(93, 113, "Exit_Ctrl")
+				LOOPTEST(93, 113, "Exit_Ctl")
 				// default: // not sure if present
 				// 	return SUCCESS;
 			}
@@ -334,13 +338,13 @@ MxResult LegoCarBuild::Tickle()
 		else if (m_unk0x330 == 2) {
 			switch (m_unk0x10a) {
 			case 500:
-				LOOPTEST(155, 175, "Exit_Ctrl")
+				LOOPTEST(155, 175, "Exit_Ctl")
 				LOOPTEST(215, 235, "ShelfUp_Ctl")
 				LOOPTEST(285, 305, "Yellow_Ctl")
 				LOOPTEST(300, 320, "Platform_Ctl")
-				LOOPTEST(340, 360, "Exit_Ctrl")
+				LOOPTEST(340, 360, "Exit_Ctl")
 			case 501:
-				LOOPTEST(23, 33, "Exit_Ctrl")
+				LOOPTEST(23, 33, "Exit_Ctl")
 				LOOPTEST(39, 44, "ShelfUp_Ctl")
 				LOOPTEST(105, 115, "Yellow_Ctl")
 				LOOPTEST(124, 129, "Platform_Ctl")
@@ -351,13 +355,13 @@ MxResult LegoCarBuild::Tickle()
 		else if (m_unk0x330 == 1) {
 			switch (m_unk0x10a) {
 			case 500:
-				LOOPTEST(185, 205, "Exit_Ctrl")
+				LOOPTEST(185, 205, "Exit_Ctl")
 				LOOPTEST(235, 255, "ShelfUp_Ctl")
 				LOOPTEST(292, 312, "Yellow_Ctl")
 				LOOPTEST(315, 335, "Platform_Ctl")
-				LOOPTEST(353, 373, "Exit_Ctrl")
+				LOOPTEST(353, 373, "Exit_Ctl")
 			case 501:
-				LOOPTEST(45, 50, "Exit_Ctrl")
+				LOOPTEST(45, 50, "Exit_Ctl")
 				LOOPTEST(74, 79, "ShelfUp_Ctl")
 				LOOPTEST(116, 121, "Yellow_Ctl")
 				LOOPTEST(130, 135, "Platform_Ctl")

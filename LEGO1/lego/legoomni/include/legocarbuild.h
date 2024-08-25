@@ -107,7 +107,7 @@ private:
 	undefined4 m_unk0x104;                 // 0x104
 	undefined m_unk0x108;                  // 0x108
 	undefined m_unk0x109;                  // 0x109
-	MxS16 m_unk0x10a;                      // 0x10a
+	MxU16 m_unk0x10a;                      // 0x10a
 	DWORD m_unk0x10c;                      // 0x10c
 	LegoROI* m_unk0x110;                   // 0x110
 	Mx3DPointFloat m_unk0x114;             // 0x114
