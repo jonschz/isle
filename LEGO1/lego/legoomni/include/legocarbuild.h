@@ -144,9 +144,10 @@ private:
 	undefined4 m_unk0x320;     // 0x320
 	undefined4 m_unk0x324;     // 0x324
 	undefined4 m_unk0x328;     // 0x328
-	undefined4 m_unk0x2d8;     // 0x2d8
+	undefined4 m_unk0x32c;     // 0x32c
 
-	LegoVehicleBuildState* m_unk0x32c; // 0x32c
+	// variable name verified by BETA10 0x1006b219
+	LegoVehicleBuildState* m_buildState; // 0x32c
 
 	undefined4 m_unk0x330; // 0x330
 	undefined4 m_unk0x334; // 0x334

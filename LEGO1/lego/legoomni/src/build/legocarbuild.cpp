@@ -1,11 +1,14 @@
 #include "legocarbuild.h"
 
+#include "legocontrolmanager.h"
+#include "legogamestate.h"
 #include "legoinputmanager.h"
 #include "legoutils.h"
 #include "misc.h"
 #include "mxbackgroundaudiomanager.h"
 #include "mxmisc.h"
 #include "mxnotificationmanager.h"
+#include "mxticklemanager.h"
 #include "scripts.h"
 
 DECOMP_SIZE_ASSERT(LegoCarBuild, 0x34c)
@@ -16,8 +19,8 @@ DECOMP_SIZE_ASSERT(LegoVehicleBuildState, 0x50)
 LegoCarBuild::LegoCarBuild()
 {
 	// Not close yet - might be getting there when more of this class is implemented
-	m_unk0x110 = 0;
 	m_unk0x100 = 0;
+	m_unk0x110 = 0;
 	m_unk0xf8 = 0xffffffff;
 	m_unk0x2d4 = '\0';
 	m_unk0x258 = 0;
@@ -41,9 +44,9 @@ LegoCarBuild::LegoCarBuild()
 	m_unk0x320 = 0;
 	m_unk0x324 = 0;
 	m_unk0x328 = 0;
-	m_unk0x2d8 = 0;
+	m_unk0x32c = NULL;
 	m_unk0x33c = 0;
-	m_unk0x32c = 0;
+	m_buildState = 0;
 	m_unk0x104 = 0;
 	m_unk0x109 = '\0';
 	m_unk0x108 = '\0';
@@ -55,6 +58,7 @@ LegoCarBuild::LegoCarBuild()
 }
 
 // FUNCTION: LEGO1 0x10022930
+// FUNCTION: BETA10 0x10070070
 MxBool LegoCarBuild::VTable0x5c()
 {
 	return TRUE;
@@ -73,10 +77,66 @@ LegoCarBuild::~LegoCarBuild()
 // FUNCTION: BETA10 0x1006afd9
 MxResult LegoCarBuild::Create(MxDSAction& p_dsAction)
 {
-	// TODO
 	MxResult result = LegoWorld::Create(p_dsAction);
 
-	return SUCCESS;
+	if (!result) {
+		// TickleManager()->RegisterClient(this, 100);
+		InputManager()->SetWorld(this);
+		ControlManager()->Register(this);
+
+		SetIsWorldActive(FALSE);
+
+		InputManager()->Register(this);
+
+		// variable name verified by BETA10 0x1006b1a6
+		const char* buildStateClassName = NULL;
+
+		if (m_atomId == *g_copterScript) {
+			buildStateClassName = "LegoCopterBuildState";
+			GameState()->SetCurrentArea(LegoGameState::Area::e_copterbuild);
+			m_unk0x330 = 1;
+		}
+		else if (m_atomId == *g_dunecarScript) {
+			buildStateClassName = "LegoDuneCarBuildState";
+			GameState()->SetCurrentArea(LegoGameState::Area::e_dunecarbuild);
+			m_unk0x330 = 2;
+		}
+		else if (m_atomId == *g_jetskiScript) {
+			buildStateClassName = "LegoJetskiBuildState";
+			GameState()->SetCurrentArea(LegoGameState::Area::e_jetskibuild);
+			m_unk0x330 = 3;
+		}
+		else if (m_atomId == *g_racecarScript) {
+			buildStateClassName = "LegoRaceCarBuildState";
+			GameState()->SetCurrentArea(LegoGameState::Area::e_racecarbuild);
+			m_unk0x330 = 4;
+		}
+
+		LegoGameState* gameState = GameState();
+
+
+		LegoVehicleBuildState* buildState = (LegoVehicleBuildState*) gameState->GetState(buildStateClassName);
+
+		if (! buildState) {
+			buildState = (LegoVehicleBuildState*) gameState->CreateState(buildStateClassName);
+		}
+
+		m_buildState = buildState;
+
+		m_unk0x174 = m_buildState->m_unk0x4d; // not found in BETA10
+
+		GameState()->StopArea(LegoGameState::Area::e_previousArea);
+
+		m_buildState->m_animationState = 1;
+		m_unk0x100 = 0;
+
+		BackgroundAudioManager()->Stop();
+		EnableAnimations(FALSE);
+
+		result = SUCCESS;
+	}
+
+	return result;
 }
 
 // FUNCTION: LEGO1 0x10022fc0
@@ -97,7 +157,6 @@ void LegoCarBuild::VTable0x70()
 	float worldPos[3];
 	float screenPos[4];
 
-
 	worldPos[0] = m_unk0x2a4[0];
 	worldPos[1] = m_unk0x2a4[1];
 	worldPos[2] = m_unk0x2a4[2];
@@ -116,7 +175,10 @@ void LegoCarBuild::VTable0x70()
 	m_unk0x298 = screenPos[0] / screenPos[3];
 	m_unk0x29c = screenPos[1] / screenPos[3];
 
-	m_unk0x2a0 = sqrt((float)(m_unk0x298 - m_unk0x290) * (m_unk0x298 - m_unk0x290)  + (m_unk0x29c - m_unk0x294) * (m_unk0x29c - m_unk0x294));
+	m_unk0x2a0 = sqrt(
+		(float) (m_unk0x298 - m_unk0x290) * (m_unk0x298 - m_unk0x290) +
+		(m_unk0x29c - m_unk0x294) * (m_unk0x29c - m_unk0x294)
+	);
 
 	m_unk0x25c.Unknown1(m_unk0x178, m_unk0x208);
 }
@@ -174,8 +236,8 @@ void LegoCarBuild::VTable0x7c(float param_1[3], float param_2[3])
 // FUNCTION: BETA10 0x100701f0
 void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3, float param_4[2])
 {
-	// The code does the right thing and matches BETA10 perfectly.
-	// Probably compiler entropy
+	// The code does the right thing and matches BETA10 perfectly, but mismatches LEGO1.
+	// Maybe compiler entropy?
 	if (param_1[1] == 0.0f) {
 		return;
 	}
@@ -231,7 +293,7 @@ MxBool LegoCarBuild::Escape()
 	InvokeAction(Extra::ActionType::e_stop, *g_jukeboxScript, p_targetEntityId, NULL);
 	DeleteObjects(&m_atomId, 500, 999);
 
-	m_unk0x32c->m_animationState = 0;
+	m_buildState->m_animationState = 0;
 	m_unk0x334 = 2;
 	return TRUE;
 }
