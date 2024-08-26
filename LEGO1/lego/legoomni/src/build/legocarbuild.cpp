@@ -11,9 +11,12 @@
 #include "mxnotificationmanager.h"
 #include "mxticklemanager.h"
 #include "scripts.h"
+#include "mxcontrolpresenter.h"
 
 DECOMP_SIZE_ASSERT(LegoCarBuild, 0x34c)
 DECOMP_SIZE_ASSERT(LegoVehicleBuildState, 0x50)
+
+MxS16 LegoCarBuild::g_unk0x100f11cc = -1;
 
 // FUNCTION: LEGO1 0x100226d0
 // FUNCTION: BETA10 0x1006ac10
@@ -400,8 +403,22 @@ void LegoCarBuild::FUN_10024f50()
 	m_unk0x258->FUN_10079920(0.07f);
 }
 
+// FUNCTION: LEGO1 0x10024fa0
+// FUNCTION: BETA10 0x1006e04f
+void LegoCarBuild::SetPresentersEnabled(MxBool p_enabled)
+{
+	m_presentersEnabled = p_enabled;
+	m_unk0x2dc->Enable(p_enabled);
+	m_unk0x2e0->Enable(p_enabled);
+	m_unk0x2e4->Enable(p_enabled);
+	m_unk0x2e8->Enable(p_enabled);
+	m_unk0x2ec->Enable(p_enabled);
+	m_unk0x2f0->Enable(p_enabled);
+	m_unk0x2f4->Enable(p_enabled);
+}
+
 // FUNCTION: LEGO1 0x10025010
-void LegoCarBuild::ToggleEnabled()
+void LegoCarBuild::TogglePresentersEnabled()
 {
 	m_unk0x2dc->Enable(!m_unk0x2dc->IsEnabled());
 	m_unk0x2e0->Enable(!m_unk0x2e0->IsEnabled());
@@ -430,11 +447,29 @@ void LegoCarBuild::Enable(MxBool p_enable)
 	}
 }
 
-// STUB: LEGO1 0x10025db0
-// STUB: BETA10 0x1006ed18
+// FUNCTION: LEGO1 0x10025db0
+// FUNCTION: BETA10 0x1006ed18
 void LegoCarBuild::FUN_10025db0(const char* param_1, undefined4 param_2)
 {
-	// TODO
+	m_unk0x33c = (MxControlPresenter*) Find("MxControlPresenter", param_1);
+
+	MxS16 sVar3 = 1 - (param_2 / 5) & 1;
+
+	if (m_unk0x2e0 == m_unk0x33c) {
+		if (sVar3 != g_unk0x100f11cc) {
+			TogglePresentersEnabled();
+			g_unk0x100f11cc = sVar3;
+			return;
+		}
+	}
+	else {
+		if (m_unk0x33c->GetUnknown0x4e() != sVar3) {
+			m_unk0x33c->VTable0x6c(sVar3);
+		}
+
+		g_unk0x100f11cc = -1;
+		SetPresentersEnabled(m_presentersEnabled);
+	}
 }
 
 // FUNCTION: LEGO1 0x10025e70

@@ -5,6 +5,7 @@
 #include "legoworld.h"
 
 class LegoCarBuildAnimPresenter;
+class MxControlPresenter;
 
 // VTABLE: LEGO1 0x100d66e0
 // SIZE 0x50
@@ -93,7 +94,8 @@ public:
 
 	void FUN_10022f30();
 	void FUN_10024f50();
-	void ToggleEnabled();
+	void SetPresentersEnabled(MxBool p_enabled);
+	void TogglePresentersEnabled();
 	void FUN_10025db0(const char* param_1, undefined4 param_2);
 	int FUN_10025ee0(int param_1);
 
@@ -157,13 +159,16 @@ private:
 	// variable name verified by BETA10 0x1006b219
 	LegoVehicleBuildState* m_buildState; // 0x32c
 
-	undefined4 m_unk0x330; // 0x330
-	undefined4 m_unk0x334; // 0x334
-	undefined4 m_unk0x338; // 0x338
-	undefined4 m_unk0x33c; // 0x33c
-	undefined4 m_unk0x340; // 0x340
-	undefined4 m_unk0x344; // 0x344
-	undefined4 m_unk0x348; // 0x348
+	undefined4 m_unk0x330;          // 0x330
+	undefined4 m_unk0x334;          // 0x334
+	undefined4 m_unk0x338;          // 0x338
+	MxControlPresenter* m_unk0x33c; // 0x33c
+	undefined4 m_unk0x340;          // 0x340
+	undefined4 m_unk0x344;          // 0x344
+	MxU8 m_presentersEnabled;       // 0x348
+
+	// GLOBAL: LEGO1 0x100f11cc
+	static MxS16 g_unk0x100f11cc;
 };
 
 #endif // LEGOCARBUILD_H
