@@ -453,7 +453,7 @@ void LegoCarBuild::FUN_10025db0(const char* param_1, undefined4 param_2)
 {
 	m_unk0x33c = (MxControlPresenter*) Find("MxControlPresenter", param_1);
 
-	MxS16 sVar3 = 1 - (param_2 / 5) & 1;
+	MxS16 sVar3 = 1 - ((param_2 / 5) & 1);
 
 	if (m_unk0x2e0 == m_unk0x33c) {
 		if (sVar3 != g_unk0x100f11cc) {
