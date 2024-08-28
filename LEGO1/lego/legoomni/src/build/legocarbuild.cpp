@@ -264,6 +264,7 @@ void LegoCarBuild::VTable0x80(float param_1[2], float param_2[2], float param_3,
 // GLOBAL: LEGO1 0x100d65a4
 const MxFloat MINUS_ZEROPOINTONE = -0.1f;
 
+
 // FUNCTION: LEGO1 0x100238b0
 // FUNCTION: BETA10 0x1006c18f
 MxResult LegoCarBuild::Tickle()
@@ -395,12 +396,15 @@ void LegoCarBuild::ReadyWorld()
 	// TODO
 }
 
+// GLOBAL: LEGO1 0x100d65a8
+const MxFloat POINTZEROZEROSEVEN = 0.07;
+
 // FUNCTION: LEGO1 0x10024f50
 // FUNCTION: BETA10 0x1006dfce
 void LegoCarBuild::FUN_10024f50()
 {
 	m_unk0x2d4 = FALSE;
-	m_unk0x258->FUN_10079920(0.07f);
+	m_unk0x258->FUN_10079920(POINTZEROZEROSEVEN);
 }
 
 // FUNCTION: LEGO1 0x10024fa0
