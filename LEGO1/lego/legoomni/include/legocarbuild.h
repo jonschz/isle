@@ -6,6 +6,8 @@
 
 class LegoCarBuildAnimPresenter;
 class MxControlPresenter;
+class MxStillPresenter;
+class MxSoundPresenter;
 
 // VTABLE: LEGO1 0x100d66e0
 // SIZE 0x50
@@ -92,6 +94,7 @@ public:
 	virtual void VTable0x7c(float param_1[3], float param_2[3]);                                  // vtable+0x7c
 	virtual void VTable0x80(float param_1[2], float param_2[2], float param_3, float param_4[2]); // vtable+0x80
 
+	void InitPresenters();
 	void FUN_10022f30();
 	void FUN_10024f50();
 	void SetPresentersEnabled(MxBool p_enabled);
@@ -130,31 +133,31 @@ private:
 	MxS32 m_unk0x298; // 0x298
 	MxS32 m_unk0x29c; // 0x29c
 
-	float m_unk0x2a0;          // 0x2a0
-	Mx4DPointFloat m_unk0x2a4; // 0x2a4
-	Mx4DPointFloat m_unk0x2bc; // 0x2bc
-	MxBool m_unk0x2d4;         // 0x2d4
-	MxPresenter* m_unk0x2dc;   // 0x2dc
-	MxPresenter* m_unk0x2e0;   // 0x2e0
-	MxPresenter* m_unk0x2e4;   // 0x2e4
-	MxPresenter* m_unk0x2e8;   // 0x2e8
-	MxPresenter* m_unk0x2ec;   // 0x2ec
-	MxPresenter* m_unk0x2f0;   // 0x2f0
-	MxPresenter* m_unk0x2f4;   // 0x2f4
-	undefined4 m_unk0x2f8;     // 0x2f8
-	undefined4 m_unk0x2fc;     // 0x2fc
-	undefined4 m_unk0x300;     // 0x300
-	undefined4 m_unk0x304;     // 0x304
-	undefined4 m_unk0x308;     // 0x308
-	undefined4 m_unk0x30c;     // 0x30c
-	undefined4 m_unk0x310;     // 0x310
-	undefined4 m_unk0x314;     // 0x314
-	undefined4 m_unk0x318;     // 0x318
-	undefined4 m_unk0x31c;     // 0x31c
-	undefined4 m_unk0x320;     // 0x320
-	undefined4 m_unk0x324;     // 0x324
-	undefined4 m_unk0x328;     // 0x328
-	undefined4 m_unk0x32c;     // 0x32c
+	float m_unk0x2a0;                    // 0x2a0
+	Mx4DPointFloat m_unk0x2a4;           // 0x2a4
+	Mx4DPointFloat m_unk0x2bc;           // 0x2bc
+	MxBool m_unk0x2d4;                   // 0x2d4
+	MxStillPresenter* m_colorBookBitmap; // 0x2dc
+	MxControlPresenter* m_yellowCtl;     // 0x2e0
+	MxControlPresenter* m_redCtl;        // 0x2e4
+	MxControlPresenter* m_BlueCtl;       // 0x2e8
+	MxControlPresenter* m_GreenCtl;      // 0x2ec
+	MxControlPresenter* m_GrayCtl;       // 0x2f0
+	MxControlPresenter* m_BlackCtl;      // 0x2f4
+	MxSoundPresenter* m_shelfSound;      // 0x2f8
+	MxSoundPresenter* m_placeBrickSound; // 0x2fc
+	MxSoundPresenter* m_getBrickSound;   // 0x300
+	MxSoundPresenter* m_paintSound;      // 0x304
+	MxSoundPresenter* m_decalSound;      // 0x308
+	MxStillPresenter* m_decalBitmap;     // 0x30c
+	MxControlPresenter* m_decalsCtl0;    // 0x310
+	MxControlPresenter* m_decalsCtl1;    // 0x314
+	MxControlPresenter* m_decalsCtl2;    // 0x318
+	MxControlPresenter* m_decalsCtl3;    // 0x31c
+	MxControlPresenter* m_decalsCtl4;    // 0x320
+	MxControlPresenter* m_decalsCtl5;    // 0x324
+	MxControlPresenter* m_decalsCtl6;    // 0x328
+	MxControlPresenter* m_decalsCtl7;    // 0x32c
 
 	// variable name verified by BETA10 0x1006b219
 	LegoVehicleBuildState* m_buildState; // 0x32c
