@@ -9,6 +9,7 @@
 class LegoTextureInfo;
 
 // VTABLE: LEGO1 0x100d8040
+// VTABLE: BETA10 0x101bdf30
 // SIZE 0x88
 class LegoPhonemePresenter : public MxFlcPresenter {
 public:
@@ -35,6 +36,7 @@ public:
 	void PutFrame() override;                        // vtable+0x6c
 
 	// SYNTHETIC: LEGO1 0x1004e320
+	// SYNTHETIC: BETA10 0x100c4240
 	// LegoPhonemePresenter::`scalar deleting destructor'
 
 private:

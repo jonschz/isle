@@ -51,10 +51,9 @@ void OrientableROI::UpdateTransformationRelativeToParent(const Matrix4& p_transf
 	double parent2world[4][4];
 	MXM4(parent2world, local_inverse, local2world);
 
-	unsigned int k, l;
-	for (k = 0; k < 4; k++) {
-		for (l = 0; l < 4; l++) {
-			mat[k][l] = parent2world[k][l];
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 4; j++) {
+			mat[i][j] = parent2world[i][j];
 		}
 	}
 

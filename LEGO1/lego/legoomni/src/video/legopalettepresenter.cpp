@@ -43,6 +43,7 @@ void LegoPalettePresenter::Destroy(MxBool p_fromDestructor)
 }
 
 // FUNCTION: LEGO1 0x1007a120
+// FUNCTION: BETA10 0x100aadff
 void LegoPalettePresenter::Destroy()
 {
 	Destroy(FALSE);
@@ -74,6 +75,7 @@ MxResult LegoPalettePresenter::ParsePalette(MxStreamChunk* p_chunk)
 }
 
 // FUNCTION: LEGO1 0x1007a230
+// FUNCTION: BETA10 0x100ab031
 void LegoPalettePresenter::ReadyTickle()
 {
 	MxStreamChunk* chunk = m_subscriber->PeekData();

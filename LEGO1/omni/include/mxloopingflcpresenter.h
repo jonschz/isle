@@ -5,6 +5,7 @@
 #include "mxflcpresenter.h"
 
 // VTABLE: LEGO1 0x100dc480
+// VTABLE: BETA10 0x101c20e8
 // SIZE 0x6c
 class MxLoopingFlcPresenter : public MxFlcPresenter {
 public:

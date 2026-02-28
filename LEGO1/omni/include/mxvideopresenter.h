@@ -9,6 +9,7 @@
 #include <ddraw.h>
 
 // VTABLE: LEGO1 0x100d4be8
+// VTABLE: BETA10 0x101bb050
 // SIZE 0x64
 class MxVideoPresenter : public MxMediaPresenter {
 public:
@@ -31,26 +32,32 @@ public:
 	virtual void PutFrame(); // vtable+0x6c
 
 	// FUNCTION: LEGO1 0x1000c730
+	// FUNCTION: BETA10 0x10054ae0
 	virtual void RealizePalette() {} // vtable+0x70
 
 	virtual undefined VTable0x74(); // vtable+0x74
 
 	// FUNCTION: LEGO1 0x1000c740
+	// FUNCTION: BETA10 0x10055030
 	~MxVideoPresenter() override { Destroy(TRUE); } // vtable+0x00
 
 	// FUNCTION: LEGO1 0x1000c7a0
+	// FUNCTION: BETA10 0x100550c0
 	void Destroy() override { Destroy(FALSE); } // vtable+0x38
 
 	// FUNCTION: LEGO1 0x1000c7b0
+	// FUNCTION: BETA10 0x100550f0
 	virtual LPDIRECTDRAWSURFACE GetSurface() { return m_surface; } // vtable+0x78
 
 	// FUNCTION: LEGO1 0x1000c7c0
 	virtual MxBool HasFrameBitmapOrAlpha() { return m_frameBitmap != NULL || m_alpha != NULL; } // vtable+0x7c
 
 	// FUNCTION: LEGO1 0x1000c7e0
+	// FUNCTION: BETA10 0x10055120
 	virtual MxS32 GetWidth() { return m_alpha ? m_alpha->GetWidth() : m_frameBitmap->GetBmiWidth(); } // vtable+0x80
 
 	// FUNCTION: LEGO1 0x1000c800
+	// FUNCTION: BETA10 0x10055150
 	virtual MxS32 GetHeight()
 	{
 		return m_alpha ? m_alpha->GetHeight() : m_frameBitmap->GetBmiHeightAbs();
@@ -71,6 +78,7 @@ public:
 	}
 
 	// FUNCTION: LEGO1 0x1000c830
+	// FUNCTION: BETA10 0x100551d0
 	MxBool IsA(const char* p_name) const override // vtable+0x10
 	{
 		return !strcmp(p_name, MxVideoPresenter::ClassName()) || MxMediaPresenter::IsA(p_name);
@@ -128,6 +136,7 @@ public:
 	BYTE BitmapIsMap() { return m_flags.m_bit4; }
 
 	// SYNTHETIC: LEGO1 0x1000c910
+	// SYNTHETIC: BETA10 0x10055240
 	// MxVideoPresenter::`scalar deleting destructor'
 
 private:

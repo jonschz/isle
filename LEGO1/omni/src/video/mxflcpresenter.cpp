@@ -18,6 +18,7 @@ MxFlcPresenter::MxFlcPresenter()
 }
 
 // FUNCTION: LEGO1 0x100b3420
+// FUNCTION: BETA10 0x10139e81
 MxFlcPresenter::~MxFlcPresenter()
 {
 	if (this->m_flcHeader) {
@@ -25,7 +26,28 @@ MxFlcPresenter::~MxFlcPresenter()
 	}
 }
 
+#ifdef BETA10
+// FUNCTION: BETA10 0x10139f2a
+void MxFlcPresenter::Destroy(MxBool p_fromDestructor)
+{
+	m_criticalSection.Enter(-1, "", 0);
+
+	if (m_flcHeader) {
+		delete[] m_flcHeader;
+	}
+
+	// TODO: some function call here
+
+	m_criticalSection.Leave();
+
+	if (!p_fromDestructor) {
+		MxVideoPresenter::Destroy();
+	}
+}
+#endif
+
 // FUNCTION: LEGO1 0x100b3490
+// FUNCTION: BETA10 0x10139fae
 void MxFlcPresenter::LoadHeader(MxStreamChunk* p_chunk)
 {
 	m_flcHeader = (FLIC_HEADER*) new MxU8[p_chunk->GetLength()];
@@ -33,6 +55,7 @@ void MxFlcPresenter::LoadHeader(MxStreamChunk* p_chunk)
 }
 
 // FUNCTION: LEGO1 0x100b34d0
+// FUNCTION: BETA10 0x1013a004
 void MxFlcPresenter::CreateBitmap()
 {
 	if (m_frameBitmap) {
@@ -42,6 +65,20 @@ void MxFlcPresenter::CreateBitmap()
 	m_frameBitmap = new MxBitmap;
 	m_frameBitmap->SetSize(m_flcHeader->width, m_flcHeader->height, NULL, FALSE);
 }
+
+#ifdef BETA10
+// FUNCTION: BETA10 0x1013a295
+MxResult MxFlcPresenter::AddToManager()
+{
+	return MxVideoPresenter::AddToManager();
+}
+
+// FUNCTION: BETA10 0x1013a2b3
+void MxFlcPresenter::Destroy()
+{
+	Destroy(FALSE);
+}
+#endif
 
 // FUNCTION: LEGO1 0x100b3570
 // FUNCTION: BETA10 0x1013a10f
@@ -76,6 +113,7 @@ void MxFlcPresenter::LoadFrame(MxStreamChunk* p_chunk)
 }
 
 // FUNCTION: LEGO1 0x100b3620
+// FUNCTION: BETA10 0x1013a221
 void MxFlcPresenter::RealizePalette()
 {
 	MxPalette* palette = m_frameBitmap->CreatePalette();

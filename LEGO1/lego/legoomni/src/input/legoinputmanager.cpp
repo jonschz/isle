@@ -54,6 +54,7 @@ LegoInputManager::LegoInputManager()
 }
 
 // FUNCTION: LEGO1 0x1005b8f0
+// FUNCTION: BETA10 0x10088c10
 LegoInputManager::~LegoInputManager()
 {
 	Destroy();
@@ -88,6 +89,7 @@ MxResult LegoInputManager::Create(HWND p_hwnd)
 }
 
 // FUNCTION: LEGO1 0x1005bfe0
+// FUNCTION: BETA10 0x10088e8f
 void LegoInputManager::Destroy()
 {
 	ReleaseDX();
@@ -126,6 +128,7 @@ void LegoInputManager::CreateAndAcquireKeyboard(HWND p_hwnd)
 }
 
 // FUNCTION: LEGO1 0x1005c0a0
+// FUNCTION: BETA10 0x1008904e
 void LegoInputManager::ReleaseDX()
 {
 	if (m_directInputDevice != NULL) {
@@ -353,6 +356,7 @@ void LegoInputManager::QueueEvent(NotificationId p_id, MxU8 p_modifier, MxLong p
 }
 
 // FUNCTION: LEGO1 0x1005c820
+// FUNCTION: BETA10 0x100897bf
 void LegoInputManager::ProcessEvents()
 {
 	AUTOLOCK(m_criticalSection);

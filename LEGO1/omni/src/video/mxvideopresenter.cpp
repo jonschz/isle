@@ -109,6 +109,7 @@ void MxVideoPresenter::Init()
 }
 
 // FUNCTION: LEGO1 0x100b27b0
+// FUNCTION: BETA10 0x10138828
 void MxVideoPresenter::Destroy(MxBool p_fromDestructor)
 {
 	if (MVideoManager() != NULL) {
@@ -232,6 +233,7 @@ inline MxS32 MxVideoPresenter::PrepareRects(RECT& p_rectDest, RECT& p_rectSrc)
 }
 
 // FUNCTION: LEGO1 0x100b2a70
+// FUNCTION: BETA10 0x10138b58
 void MxVideoPresenter::PutFrame()
 {
 	MxDisplaySurface* displaySurface = MVideoManager()->GetDisplaySurface();
@@ -335,6 +337,7 @@ void MxVideoPresenter::PutFrame()
 }
 
 // FUNCTION: LEGO1 0x100b2f60
+// FUNCTION: BETA10 0x10139283
 void MxVideoPresenter::ReadyTickle()
 {
 	MxStreamChunk* chunk = NextChunk();
@@ -348,6 +351,7 @@ void MxVideoPresenter::ReadyTickle()
 }
 
 // FUNCTION: LEGO1 0x100b2fa0
+// FUNCTION: BETA10 0x101392d7
 void MxVideoPresenter::StartingTickle()
 {
 	MxStreamChunk* chunk = CurrentChunk();
@@ -359,6 +363,7 @@ void MxVideoPresenter::StartingTickle()
 }
 
 // FUNCTION: LEGO1 0x100b2fe0
+// FUNCTION: BETA10 0x1013933d
 void MxVideoPresenter::StreamingTickle()
 {
 	if (m_action->GetFlags() & MxDSAction::c_bit10) {
@@ -402,6 +407,7 @@ void MxVideoPresenter::StreamingTickle()
 }
 
 // FUNCTION: LEGO1 0x100b3080
+// FUNCTION: BETA10 0x1013945e
 void MxVideoPresenter::RepeatingTickle()
 {
 	if (IsEnabled()) {
@@ -446,6 +452,7 @@ void MxVideoPresenter::RepeatingTickle()
 }
 
 // FUNCTION: LEGO1 0x100b3130
+// FUNCTION: BETA10 0x1013958f
 void MxVideoPresenter::FreezingTickle()
 {
 	MxLong sustainTime = ((MxDSMediaAction*) m_action)->GetSustainTime();
@@ -467,6 +474,7 @@ void MxVideoPresenter::FreezingTickle()
 }
 
 // FUNCTION: LEGO1 0x100b31a0
+// FUNCTION: BETA10 0x1013965a
 MxResult MxVideoPresenter::AddToManager()
 {
 	MxResult result = FAILURE;
@@ -514,6 +522,7 @@ MxResult MxVideoPresenter::PutData()
 }
 
 // FUNCTION: LEGO1 0x100b3300
+// FUNCTION: BETA10 0x10139891
 undefined MxVideoPresenter::VTable0x74()
 {
 	return 0;

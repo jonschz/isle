@@ -15,6 +15,7 @@ public:
 	~MxFlcPresenter() override;
 
 	// FUNCTION: LEGO1 0x1004e200
+	// FUNCTION: BETA10 0x100836f0
 	MxBool IsA(const char* p_name) const override // vtable+0x10
 	{
 		return !strcmp(p_name, MxFlcPresenter::ClassName()) || MxVideoPresenter::IsA(p_name);
@@ -34,15 +35,25 @@ public:
 		return HandlerClassName();
 	}
 
+#ifdef BETA10
+	MxResult AddToManager() override;
+	void Destroy() override;
+#endif
+
 	void LoadHeader(MxStreamChunk* p_chunk) override; // vtable+0x5c
 	void CreateBitmap() override;                     // vtable+0x60
 	void LoadFrame(MxStreamChunk* p_chunk) override;  // vtable+0x68
 	void RealizePalette() override;                   // vtable+0x70
 
 	// SYNTHETIC: LEGO1 0x100b3400
+	// SYNTHETIC: BETA10 0x1013b880
 	// MxFlcPresenter::`scalar deleting destructor'
 
 protected:
+#ifdef BETA10
+	void Destroy(MxBool p_fromDestructor);
+#endif
+
 	FLIC_HEADER* m_flcHeader; // 0x64
 };
 

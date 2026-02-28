@@ -17,6 +17,7 @@
 DECOMP_SIZE_ASSERT(MxObjectFactory, 0x38); // 100af1db
 
 // FUNCTION: LEGO1 0x100b0d80
+// FUNCTION: BETA10 0x10142ce0
 MxObjectFactory::MxObjectFactory()
 {
 #define X(V) m_id##V = MxAtomId(#V, e_exact);

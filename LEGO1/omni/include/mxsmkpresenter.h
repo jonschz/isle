@@ -6,6 +6,7 @@
 #include "mxvideopresenter.h"
 
 // VTABLE: LEGO1 0x100dc348
+// VTABLE: BETA10 0x101c1f30
 // SIZE 0x720
 class MxSmkPresenter : public MxVideoPresenter {
 public:

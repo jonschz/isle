@@ -8,15 +8,18 @@
 class MxDSSubscriber;
 
 // VTABLE: LEGO1 0x100d4cd8
+// VTABLE: BETA10 0x101bb0f0
 // SIZE 0x50
 class MxMediaPresenter : public MxPresenter {
 public:
 	MxMediaPresenter() { Init(); }
 
 	// FUNCTION: LEGO1 0x1000c550
+	// FUNCTION: BETA10 0x10054e90
 	~MxMediaPresenter() override { Destroy(TRUE); }
 
 	// FUNCTION: LEGO1 0x1000c5b0
+	// FUNCTION: BETA10 0x1003cfc0
 	void Destroy() override { Destroy(FALSE); } // vtable+0x38
 
 	MxResult Tickle() override; // vtable+0x08
@@ -36,6 +39,7 @@ public:
 	}
 
 	// FUNCTION: LEGO1 0x1000c5d0
+	// FUNCTION: BETA10 0x10054f70
 	MxBool IsA(const char* p_name) const override // vtable+0x10
 	{
 		return !strcmp(p_name, MxMediaPresenter::ClassName()) || MxPresenter::IsA(p_name);
@@ -54,6 +58,7 @@ public:
 	MxStreamChunk* NextChunk();
 
 	// SYNTHETIC: LEGO1 0x1000c680
+	// SYNTHETIC: BETA10 0x10054fe0
 	// MxMediaPresenter::`scalar deleting destructor'
 
 protected:

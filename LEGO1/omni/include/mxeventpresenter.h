@@ -5,6 +5,7 @@
 #include "mxmediapresenter.h"
 
 // VTABLE: LEGO1 0x100dca88
+// VTABLE: BETA10 0x101c26f8
 // SIZE 0x54
 class MxEventPresenter : public MxMediaPresenter {
 public:

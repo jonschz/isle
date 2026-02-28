@@ -23,6 +23,7 @@ void MxMediaPresenter::Init()
 }
 
 // FUNCTION: LEGO1 0x100b54f0
+// FUNCTION: BETA10 0x10135bda
 void MxMediaPresenter::Destroy(MxBool p_fromDestructor)
 {
 	{
@@ -60,6 +61,7 @@ void MxMediaPresenter::Destroy(MxBool p_fromDestructor)
 }
 
 // FUNCTION: LEGO1 0x100b5650
+// FUNCTION: BETA10 0x10135dca
 MxStreamChunk* MxMediaPresenter::CurrentChunk()
 {
 	MxStreamChunk* chunk = NULL;
@@ -99,6 +101,7 @@ MxStreamChunk* MxMediaPresenter::NextChunk()
 }
 
 // FUNCTION: LEGO1 0x100b5700
+// FUNCTION: BETA10 0x10135f14
 MxResult MxMediaPresenter::StartAction(MxStreamController* p_controller, MxDSAction* p_action)
 {
 	MxResult result = FAILURE;
@@ -166,6 +169,7 @@ void MxMediaPresenter::EndAction()
 }
 
 // FUNCTION: LEGO1 0x100b5d10
+// FUNCTION: BETA10 0x10136415
 MxResult MxMediaPresenter::Tickle()
 {
 	AUTOLOCK(m_criticalSection);
@@ -176,6 +180,7 @@ MxResult MxMediaPresenter::Tickle()
 }
 
 // FUNCTION: LEGO1 0x100b5d90
+// FUNCTION: BETA10 0x1013649f
 void MxMediaPresenter::StreamingTickle()
 {
 	if (!m_currentChunk) {
@@ -200,6 +205,7 @@ void MxMediaPresenter::StreamingTickle()
 }
 
 // FUNCTION: LEGO1 0x100b5e10
+// FUNCTION: BETA10 0x10136597
 void MxMediaPresenter::RepeatingTickle()
 {
 	if (IsEnabled() && !m_currentChunk) {
@@ -224,6 +230,7 @@ void MxMediaPresenter::RepeatingTickle()
 }
 
 // FUNCTION: LEGO1 0x100b5ef0
+// FUNCTION: BETA10 0x101366c0
 void MxMediaPresenter::DoneTickle()
 {
 	ProgressTickleState(e_idle);

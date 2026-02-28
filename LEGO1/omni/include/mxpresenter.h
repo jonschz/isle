@@ -12,7 +12,13 @@ class MxOmni;
 class MxStreamController;
 class MxEntity;
 
+#ifdef BETA10
+// This was likely in line and not a macro, but we can cover both LEGO1 and BETA10 this way
+#define ProgressTickleState(p_tickleState) m_currentTickleState = p_tickleState
+#endif
+
 // VTABLE: LEGO1 0x100d4d38
+// VTABLE: BETA10 0x101bb160
 // SIZE 0x40
 class MxPresenter : public MxCore {
 public:
@@ -31,9 +37,11 @@ public:
 	MxResult Tickle() override; // vtable+0x08
 
 	// FUNCTION: LEGO1 0x1000be30
+	// FUNCTION: BETA10 0x1004d6f0
 	virtual void VTable0x14() {} // vtable+0x14
 
 	// FUNCTION: LEGO1 0x1000be40
+	// FUNCTION: BETA10 0x1003cf30
 	virtual void ReadyTickle()
 	{
 		ParseExtra();
@@ -41,37 +49,51 @@ public:
 	} // vtable+0x18
 
 	// FUNCTION: LEGO1 0x1000be60
+	// FUNCTION: BETA10 0x1003dbe0
 	virtual void StartingTickle() { ProgressTickleState(e_streaming); } // vtable+0x1c
 
 	// FUNCTION: LEGO1 0x1000be80
+	// FUNCTION: BETA10 0x1004e1b0
 	virtual void StreamingTickle() { ProgressTickleState(e_repeating); } // vtable+0x20
 
 	// FUNCTION: LEGO1 0x1000bea0
+	// FUNCTION: BETA10 0x1004e1e0
 	virtual void RepeatingTickle() { ProgressTickleState(e_freezing); } // vtable+0x24
 
 	// FUNCTION: LEGO1 0x1000bec0
+	// FUNCTION: BETA10 0x1004d710
 	virtual void FreezingTickle() { ProgressTickleState(e_done); } // vtable+0x28
 
 protected:
 	// FUNCTION: LEGO1 0x1000bee0
+	// FUNCTION: BETA10 0x10054d60
 	virtual void DoneTickle() { ProgressTickleState(e_idle); } // vtable+0x2c
 
 	virtual void ParseExtra(); // vtable+0x30
 
+#ifndef BETA10
+	// TODO: Check if
+	// 	#define ProgressTickleState(p_tickleState) \
+	//	m_previousTickleStates |= 1 << (MxU8) m_currentTickleState; \
+	//	m_currentTickleState = p_tickleState;
+	// is an overall better match in LEGO1 (entropy build).
 	void ProgressTickleState(TickleState p_tickleState)
 	{
 		m_previousTickleStates |= 1 << (MxU8) m_currentTickleState;
 		m_currentTickleState = p_tickleState;
 	}
+#endif
 
 public:
 	// FUNCTION: LEGO1 0x1000bf00
 	~MxPresenter() override {} // vtable+0x00
 
 	// FUNCTION: LEGO1 0x1000bf70
+	// FUNCTION: BETA10 0x1003cfa0
 	virtual MxResult AddToManager() { return SUCCESS; } // vtable+0x34
 
 	// FUNCTION: LEGO1 0x1000bf80
+	// FUNCTION: BETA10 0x1004d740
 	virtual void Destroy() { Init(); } // vtable+0x38
 
 	virtual MxResult StartAction(MxStreamController*, MxDSAction*); // vtable+0x3c
@@ -88,9 +110,11 @@ public:
 	} // vtable+0x48
 
 	// FUNCTION: LEGO1 0x1000bfc0
+	// FUNCTION: BETA10 0x1004d770
 	virtual MxResult PutData() { return SUCCESS; } // vtable+0x4c
 
 	// FUNCTION: LEGO1 0x1000bfd0
+	// FUNCTION: BETA10 0x1004d790
 	virtual MxBool IsHit(MxS32 p_x, MxS32 p_y) { return FALSE; } // vtable+0x50
 
 	virtual void Enable(MxBool p_enable); // vtable+0x54
@@ -110,6 +134,7 @@ public:
 	}
 
 	// FUNCTION: LEGO1 0x1000bff0
+	// FUNCTION: BETA10 0x1004d940
 	MxBool IsA(const char* p_name) const override // vtable+0x10
 	{
 		return !strcmp(p_name, MxPresenter::ClassName()) || MxCore::IsA(p_name);
@@ -141,6 +166,7 @@ public:
 	void SetDisplayZ(MxS32 p_displayZ) { m_displayZ = p_displayZ; }
 
 	// SYNTHETIC: LEGO1 0x1000c070
+	// SYNTHETIC: BETA10 0x10054e40
 	// MxPresenter::`scalar deleting destructor'
 
 protected:

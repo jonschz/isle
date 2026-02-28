@@ -7,6 +7,7 @@
 class MxPalette;
 
 // VTABLE: LEGO1 0x100d9aa0
+// VTABLE: BETA10 0x101bd968
 // SIZE 0x68
 class LegoPalettePresenter : public MxVideoPresenter {
 public:
@@ -28,6 +29,7 @@ public:
 	}
 
 	// FUNCTION: LEGO1 0x10079f40
+	// FUNCTION: BETA10 0x100ab270
 	MxBool IsA(const char* p_name) const override // vtable+0x10
 	{
 		return !strcmp(p_name, ClassName()) || MxVideoPresenter::IsA(p_name);
@@ -39,6 +41,7 @@ public:
 	MxResult ParsePalette(MxStreamChunk* p_chunk);
 
 	// SYNTHETIC: LEGO1 0x1007a050
+	// SYNTHETIC: BETA10 0x100ab2e0
 	// LegoPalettePresenter::`scalar deleting destructor'
 
 private:

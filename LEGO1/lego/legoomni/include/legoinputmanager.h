@@ -66,6 +66,7 @@ public:
 };
 
 // VTABLE: LEGO1 0x100d8760
+// VTABLE: BETA10 0x101bc528
 // SIZE 0x338
 class LegoInputManager : public MxPresenter {
 public:
@@ -88,6 +89,7 @@ public:
 	void UnRegister(MxCore*);
 
 	// FUNCTION: LEGO1 0x1005b8b0
+	// FUNCTION: BETA10 0x1008a650
 	MxResult Tickle() override
 	{
 		ProcessEvents();
@@ -138,6 +140,7 @@ public:
 	MxResult GetNavigationKeyStates(MxU32& p_keyFlags);
 
 	// SYNTHETIC: LEGO1 0x1005b8d0
+	// SYNTHETIC: BETA10 0x1008a6a0
 	// LegoInputManager::`scalar deleting destructor'
 
 private:
